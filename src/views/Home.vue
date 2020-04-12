@@ -19,8 +19,31 @@
       inactive-color="#ff4949"
     ></vSwitch>
     <br />
-    <vRadio v-model="radioValue" label="1">西瓜</vRadio>
-    <vRadio v-model="radioValue" label="2">荔枝</vRadio>
+    <radioGroup v-model="radioValue">
+      <vRadio label="1">西瓜</vRadio>
+      <vRadio label="2">荔枝</vRadio>
+      <vRadio label="3">菠萝</vRadio>
+      <vRadio label="4">桃子</vRadio>
+    </radioGroup>
+    <br />
+    <checkboxGroup v-model="checkList">
+       <vCheckbox label="烤肉"></vCheckbox>
+       <vCheckbox label="火锅"></vCheckbox>
+       <vCheckbox label="烧烤"></vCheckbox>
+       <vCheckbox label="寿司"></vCheckbox>
+    </checkboxGroup>
+    <br />
+    <Button @click="visiable = true">点击打开dialog</Button>
+    <myDialog :visiable.sync="visiable">
+      <template v-slot:title>
+        头部
+      </template>
+      <p>这是内容</p>
+      <template v-slot:footer>
+        <Button type="success">注册</Button>
+        <Button type="warning">关闭</Button>
+      </template>
+    </myDialog>
   </div>
 </template>
 
@@ -32,6 +55,10 @@ import Counter from './components/counter'
 import vInput from './components/vInput'
 import vSwitch from './components/switch'
 import vRadio from './components/radio'
+import radioGroup from './components/radioGroup'
+import vCheckbox from './components/checkbox'
+import checkboxGroup from './components/checkboxGroup'
+import myDialog from './components/dialog'
 // import St from './components/slot'
 export default {
   name: 'Home',
@@ -42,14 +69,21 @@ export default {
     // vModelCom,
     vInput,
     vSwitch,
-    vRadio
+    vRadio,
+    radioGroup,
+    vCheckbox,
+    checkboxGroup,
+    myDialog
     // St
   },
   data() {
     return {
       value: '',
       changeValue: true,
-      radioValue:"",
+      radioValue: '',
+      checked:true,
+      checkList:[],
+      visiable:false    
     }
   },
   methods: {

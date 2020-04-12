@@ -2,8 +2,8 @@
   <!-- 容器 -->
   <div
     class="my-radio"
-    :class="{ 'is-checked': value == label }"
-    @click="$emit('input', label)"
+    :class="{ 'is-checked': value == label || radioGroup.value == label }"
+    @click="emitInput"
   >
     <!-- 输入框盒子 -->
     <span class="my-radio__input">
@@ -27,10 +27,11 @@
 <script>
 export default {
   name: 'my-radio',
+  //接收值
+  inject:['radioGroup'],
   props: {
     value: {
       type: [String, Number, Boolean],
-      required:true
     },
     label: {
       type: String,
@@ -38,6 +39,15 @@ export default {
     },
     name: {
       type: [String, Number, Boolean]
+    }
+  },
+  methods:{
+    emitInput(){
+      if(this.value){
+        this.$emit('input',this.label)
+      }else if(this.radioGroup){
+        this.radioGroup.$emit('input',this.label)
+      }
     }
   }
 }
