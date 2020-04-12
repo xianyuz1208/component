@@ -11,6 +11,19 @@ Vue.prototype.$showInfo = function(){
   // window.console.log(com)
   document.body.appendChild(com.$el)
 }
+import myMessage from './views/components/message.vue'
+Vue.prototype.$message = function({type,title,duration}){
+  //创建构造器
+  let Instance = Vue.extend(myMessage)
+  //创建实例对象
+  let instance = new Instance()
+  instance.type = type
+  instance.title = title
+  instance.duration = duration
+  instance.$mount()
+  document.body.appendChild(instance.$el)
+  instance.show()
+}
 new Vue({
   router,
   render: h => h(App)

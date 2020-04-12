@@ -91,7 +91,8 @@ export default {
   },
   methods: {
     changeData() {
-      window.alert('哈哈哈')
+      // window.alert('哈哈哈')
+      this.$message({type:'success',title:'成功',duration:1000})
     }
   }
 }
