@@ -20,11 +20,13 @@
         </div>
         <!-- 主体 -->
         <div class="my-dialog__body">
+          <!-- 默认插槽 -->
           <slot></slot>
         </div>
         <!-- 脚部 -->
         <div class="my-dialog__footer">
           <span class="dialog-footer">
+            <!-- 具名插槽 -->
             <slot name="footer"></slot>
           </span>
         </div>

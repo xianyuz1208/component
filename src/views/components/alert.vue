@@ -36,9 +36,9 @@ export default {
       default:false
     }
   },
-  mounted(){
-    window.console.log(this.$slots.default)
-  },
+  // mounted(){
+  //   window.console.log(this.$slots.default)
+  // },
   methods:{
     close(){
       this.isShow = false

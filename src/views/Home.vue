@@ -86,6 +86,9 @@ export default {
       visiable:false    
     }
   },
+  created(){
+    this.$showInfo()
+  },
   methods: {
     changeData() {
       window.alert('哈哈哈')
